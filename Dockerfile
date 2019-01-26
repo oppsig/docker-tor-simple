@@ -10,7 +10,7 @@ LABEL maintainer="oc@co.ru" \
     org.label-schema.url="https://www.torproject.org" \
     org.label-schema.vcs-url="https://github.com/osminogin/docker-tor-simple.git" \
     org.label-schema.vcs-ref=$VCS_REF \
-    org.label-schema.docker.cmd="docker run -d --rm --publish 127.0.0.1:9050:9050 --name tor osminogin/tor-simple" \
+    org.label-schema.docker.cmd="docker run -d --rm --publish 127.0.0.1:9050:9050 --name tor oppsig/tor-simple" \
     org.label-schema.schema-version="1.0"
 
 
