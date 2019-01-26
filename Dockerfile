@@ -3,6 +3,8 @@ FROM alpine:edge
 ARG BUILD_DATE
 ARG VCS_REF
 
+ENV HashedControlPassword "#HashedControlPassword <insert hashed control password>"
+
 LABEL maintainer="oc@co.ru" \
     com.microscaling.license="MIT" \
     org.label-schema.build-date=$BUILD_DATE \
@@ -17,7 +19,8 @@ LABEL maintainer="oc@co.ru" \
 RUN apk add --no-cache tor && \
     sed "1s/^/SocksPort 0.0.0.0:9050\n/" /etc/tor/torrc.sample > /etc/tor/torrc
 RUN sed -i -e "\$aControlPort 9051" /etc/tor/torrc && \
-    sed -i -e "\$aExitNodes {NO},{SE},{DK},{FI},{NL}" /etc/tor/torrc
+    sed -i -e "\$aExitNodes {NO},{SE},{DK},{FI},{NL}" /etc/tor/torrc && \
+    sed -i -e "\$a${HashedControlPassword}" /etc/tor/torrc
 
 EXPOSE 9050
 
