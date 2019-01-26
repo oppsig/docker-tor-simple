@@ -9,7 +9,7 @@ TimeoutStartSec=0
 Restart=always
 RestartSec=15s
 ExecStartPre=/usr/bin/docker pull osminogin/tor-simple
-ExecStart=/usr/bin/docker run --rm --name tor -p 127.0.0.1:9050:9050 osminogin/tor-simple
+ExecStart=/usr/bin/docker run --rm --name tor -p 127.0.0.1:9050:9050 oppsig/tor-simple
 ExecStop=/usr/bin/docker stop tor
 
 [Install]
