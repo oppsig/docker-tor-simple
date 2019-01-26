@@ -27,20 +27,20 @@ Star this project on Docker Hub :star2: https://hub.docker.com/r/osminogin/tor-s
 Automated builds of the image are available on [Docker Hub](https://hub.docker.com/r/osminogin/tor-simple/) and is the recommended method of installation.
 
 ```bash
-docker pull osminogin/tor-simple
+docker pull oppsig/tor
 ```
 
 Alternatively you can build the image yourself.
 
 ```bash
-docker build -t tor github.com/osminogin/docker-tor-simple
+docker build -t tor github.com/oppsig/tor
 ```
 
 
 ### Quickstart
 
 ```bash
-docker run -p 127.0.0.1:9050:9050 --name tor osminogin/tor-simple
+docker run -p 127.0.0.1:9050:9050 --name tor oppsig/tor
 
 # or
 docker-compose up
@@ -68,7 +68,7 @@ docker run --rm --name tor \
   --expose 9030 --publish 9030:9030 \
   --expose 9051 --publish 9051:9051 \
   --volume /root/torrc:/etc/tor/torrc:ro \
-  osminogin/tor-simple
+  oppsig/tor
 ```
 
 ## Unit file for systemd
@@ -86,8 +86,8 @@ After=docker.service network.target network-online.target
 TimeoutStartSec=0
 Restart=always
 RestartSec=15s
-ExecStartPre=/usr/bin/docker pull osminogin/tor-simple
-ExecStart=/usr/bin/docker run --rm --name tor -p 127.0.0.1:9050:9050 osminogin/tor-simple
+ExecStartPre=/usr/bin/docker pull oppsig/tor-simple
+ExecStart=/usr/bin/docker run --rm --name tor -p 127.0.0.1:9050:9050 oppsig/tor-simple
 ExecStop=/usr/bin/docker stop tor
 
 [Install]
@@ -104,7 +104,7 @@ Example webserver deployment config with microservice architecture to setup Tor 
 
 ```yaml
 tor-node:
-  image: osminogin/tor-simple
+  image: oppsig/tor
   links:
     - nginx:myservice
 
