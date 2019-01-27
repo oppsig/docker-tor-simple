@@ -24,6 +24,6 @@ EXPOSE 9050
 
 VOLUME ["/var/lib/tor"]
 
-user tor
+USER tor
 
 CMD ["/usr/bin/tor"]
